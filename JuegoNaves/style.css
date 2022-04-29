@@ -1,0 +1,95 @@
+body{
+    height: 100%;
+    overflow: hidden;
+    color:rgb(242, 251, 66);
+    background-color: rgb(30, 30, 30);
+}
+.contenedor{
+    display: flex;
+    flex-direction: column;
+    height: 100%;
+}
+.contenido-juego{
+    flex: 1;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+.juego{
+    width: 800px;
+    height: 600px;
+    background: url(assets/background-blue.png);
+    animation: fondo-animado 7s linear infinite;
+    box-shadow: 0 4px 20px rgb(0, 0, 0);
+    position: relative;
+    z-index: -2;
+}
+@keyframes fondo-animado {
+    from{
+        background-position-y: top ;
+    }
+    to{
+        background-position-y: 761.7px;
+    }
+}
+header{
+    text-align: center;
+    background-color: rgb(30, 30, 30);
+    color: aliceblue;
+    padding: 5px;
+    margin-top: 2em;
+    margin-bottom: 50px;
+}
+.titulo{
+    font: bold 80px/1 arial;
+    text-transform: uppercase;
+    color: #ffd505;
+    text-shadow: 0  2px  0   #cb8000,
+                 0  4px  0   #b47200,
+                 0  6px  0   #9e6400, 
+                 0  8px  0   #764b00, 
+                 0 10px  0   #643f00,
+                 0 12px  0   #462c00,
+                 3px 8px 15px rgba(255, 255, 255, 0.435),
+                 3px 8px  5px rgba(255, 255, 255, 0.639);
+    animation: letra-animada 4s linear infinite;
+}
+@keyframes letra-animada {
+    0%{
+        text-shadow: 0  2px  0   #cb8000,
+                 0  4px  0   #b47200,
+                 0  6px  0   #9e6400, 
+                 0  8px  0   #764b00, 
+                 0 10px  0   #643f00,
+                 0 12px  0   #462c00,
+                 3px 8px 15px rgba(255, 255, 255, 0.274),
+                 3px 8px  5px rgba(255, 255, 255, 0.404);
+    }
+    50%{
+        text-shadow: 0  2px  0   #cb8000,
+                 0  4px  0   #b47200,
+                 0  6px  0   #9e6400, 
+                 0  8px  0   #764b00, 
+                 0 10px  0   #643f00,
+                 0 12px  0   #462c00,
+                 3px 8px 15px rgba(255, 255, 255, 0.896),
+                 3px 8px  5px rgba(255, 255, 255, 0.9);
+    }
+    100%{
+        text-shadow: 0  2px  0   #cb8000,
+                 0  4px  0   #b47200,
+                 0  6px  0   #9e6400, 
+                 0  8px  0   #764b00, 
+                 0 10px  0   #643f00,
+                 0 12px  0   #462c00,
+                 3px 8px 15px rgba(255, 255, 255, 0.274),
+                 3px 8px  5px rgba(255, 255, 255, 0.404);
+    }
+}
+footer{
+    padding: 10px;
+    text-align: center;
+    font-size: 11px;
+    background-color: rgb(30, 30, 30);
+    color: aliceblue;
+}
