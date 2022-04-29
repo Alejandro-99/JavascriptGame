@@ -93,3 +93,9 @@ footer{
     background-color: rgb(30, 30, 30);
     color: aliceblue;
 }
+.juego .laser{
+    position: absolute;
+    margin-left: -2.5px;
+    height: 20px;
+    z-index: -1;
+}
