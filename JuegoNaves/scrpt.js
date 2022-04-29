@@ -7,9 +7,9 @@ const T_SPACE = 32;
 const JUEGO_ANCH = 800;
 const JUEGO_ALT = 600;
 
-const VELOCIDAD = 5; // Cuato mayor mas veicidad
+const VELOCIDAD = 5; // Cuato mayor mas velocidad
 const CANTDISPARO = 15; //Cunto menos mas disparos
-const VELICIDADLASER = 5.3
+const VELICIDADLASER = 5.3 //Cuanto mayor mas velocidad
 
 const STATE = {
     x_pos : 0,
@@ -63,7 +63,7 @@ function hitboxY(y){
 
 }
 
-function deleteLaser(lasers, laser, $laser){
+function hitboxLaser(lasers, laser, $laser){
     const index = lasers.indexOf(laser);
     lasers.splice(index, 1);
     $juego.removeChild($laser);
@@ -124,13 +124,11 @@ function updateLaser(){
         const laser = lasers[i];
         laser.y -=VELICIDADLASER;
         if(laser.y < -2){
-            deleteLaser(lasers, laser, laser.$laser);
+            hitboxLaser(lasers, laser, laser.$laser);
         }
         setPos(laser.$laser, laser.x, (laser.y));
     }
 }
-
-
 
 //Teclas jugador
 function KeyPress(event){
@@ -173,15 +171,12 @@ function update(){
     window.requestAnimationFrame(update);
 }
 
-
 //Juego
 const $juego = document.querySelector(".juego");
 createPlayer($juego);
 
-
 //Listeners
 window.addEventListener("keydown",KeyPress);
 window.addEventListener("keyup",KeyRelease);
-
 
 update();
