@@ -7,9 +7,9 @@ const T_SPACE = 32;
 const JUEGO_ANCH = 800;
 const JUEGO_ALT = 600;
 
-const VELOCIDAD = 5; // Cuato mayor mas velocidad
-const CANTDISPARO = 15; //Cunto menos mas disparos
-const VELICIDADLASER = 5.3 //Cuanto mayor mas velocidad
+const VELOCIDAD = 1.2; // Cuato mayor mas velocidad
+const CANTDISPARO = 40; //Cunto menos mas disparos
+const VELICIDADLASER = 2 //Cuanto mayor mas velocidad
 
 const STATE = {
     x_pos : 0,
@@ -21,7 +21,10 @@ const STATE = {
     disparar : false,
     laserCooldown : 0,
     lasers: [],
-    nave_anch : 80
+    enemigos: [],
+    nave_anch : 80,
+    enemi_anch : 80,
+    num_enemigos: 10
 }
 
 //Funciones generales
@@ -108,11 +111,11 @@ function updatePlayer(){
 }
 
 //Laser jugador
-function createLaser($elemento,x,y){
+function createLaser($juego,x,y){
     const $laser = document.createElement("img");
     $laser.src = "assets/laser.png";
     $laser.className = "laser";
-    $elemento.appendChild($laser);
+    $juego.appendChild($laser);
     const laser = {x,y,$laser};
     STATE.lasers.push(laser);
     setPos($laser, x,y);
@@ -130,6 +133,45 @@ function updateLaser(){
     }
 }
 
+//Enemigos
+
+function createEnemi($juego, x, y){
+    const $enemi = document.createElement("img");
+    $enemi.src = "assets/ufo.png";
+    $enemi.className = "enemigo";
+    $juego.appendChild($enemi);
+    const enemigos = {x,y, $enemi};
+    STATE.enemigos.push(enemigos);
+    setSize($enemi, STATE.enemi_anch);
+    setPos($enemi,x,y);
+}
+
+function createEnemigos($juego){
+    for(var i = 1; i <= STATE.num_enemigos/2; i++){
+        createEnemi($juego, (i-1)*130, 60);
+    } 
+    for(var i = 1; i <= STATE.num_enemigos/2; i++){
+        createEnemi($juego, (i-1)*130, 130);
+    }
+}
+
+function updateEnemi(){
+    const dx = Math.sin(Date.now()/1000)*40;
+    const dy = Math.cos(Date.now()/1000)*30;
+    const enemigos = STATE.enemigos;
+    for (let i = 0; i < enemigos.length; i++){
+      const enemi = enemigos[i];
+      var a = enemi.x + dx;
+      var b = enemi.y + dy;
+      setPos(enemi.$enemi, a, b);
+    //   enemi.cooldown = Math.random(0,100);
+    //   if (enemi.enemi_cooldown == 0){
+    //     createenemiLaser($juego, a, b);
+    //     enemi.enemi_cooldown = Math.floor(Math.random()*50)+100 ;
+    //   }
+    //   enemi.enemi_cooldown -= 0.5;
+    }
+}
 //Teclas jugador
 function KeyPress(event){
     if (event.keyCode === T_DER) {
@@ -167,13 +209,16 @@ function KeyRelease(event){
 //Update juego
 function update(){
     updatePlayer();
-    updateLaser($juego)
+    updateLaser($juego);
+    updateEnemi();
+
     window.requestAnimationFrame(update);
 }
 
 //Juego
 const $juego = document.querySelector(".juego");
 createPlayer($juego);
+createEnemigos($juego);
 
 //Listeners
 window.addEventListener("keydown",KeyPress);
