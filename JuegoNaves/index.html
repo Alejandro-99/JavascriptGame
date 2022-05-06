@@ -1,5 +1,6 @@
 <!DOCTYPE html>
 <html lang="en">
+
 <head>
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
@@ -7,14 +8,26 @@
     <link rel="stylesheet" href="style.css">
     <title>SpaceShip Xd</title>
 </head>
+
 <body>
     <div class="contenedor">
         <header><a class="titulo">SPACE<br>INVADERINO</a></header>
-        <div class = "contenido-juego">
+        <div class="contenido-juego">
             <div class="juego"></div>
+            <div class="lose">
+                <h1>GAME OVER</h1>
+                <h2>ESPABILA BOBI!</h2>
+                <button class="btn" onclick="window.location.reload()">Restart</button>
+            </div>
+            <div class="win">
+                <h1>GANADOR!</h1>
+                <h2>Winner winner chicken dinner!</h2>
+                <button class="btn" onclick="window.location.reload()">Restart</button>
+            </div>
         </div>
         <script src="scrpt.js"></script>
         <!--<footer></footer>-->
     </div>
 </body>
+
 </html>

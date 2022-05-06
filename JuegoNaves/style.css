@@ -1,21 +1,24 @@
-body{
+body {
     height: 100%;
     overflow: hidden;
-    color:rgb(242, 251, 66);
+    color: rgb(242, 251, 66);
     background-color: rgb(30, 30, 30);
 }
-.contenedor{
+
+.contenedor {
     display: flex;
     flex-direction: column;
     height: 100%;
 }
-.contenido-juego{
+
+.contenido-juego {
     flex: 1;
     display: flex;
     justify-content: center;
     align-items: center;
 }
-.juego{
+
+.juego {
     width: 800px;
     height: 600px;
     background: url(assets/background-blue.png);
@@ -24,15 +27,18 @@ body{
     position: relative;
     z-index: -2;
 }
+
 @keyframes fondo-animado {
-    from{
-        background-position-y: top ;
+    from {
+        background-position-y: top;
     }
-    to{
+
+    to {
         background-position-y: 761.7px;
     }
 }
-header{
+
+header {
     text-align: center;
     background-color: rgb(30, 30, 30);
     color: aliceblue;
@@ -40,65 +46,102 @@ header{
     margin-top: 1em;
     margin-bottom: 2em;
 }
-.titulo{
+
+.titulo {
     font: bold 80px/1 arial;
     text-transform: uppercase;
     color: #ffd505;
-    text-shadow: 0  2px  0   #cb8000,
-                 0  4px  0   #b47200,
-                 0  6px  0   #9e6400, 
-                 0  8px  0   #764b00, 
-                 0 10px  0   #643f00,
-                 0 12px  0   #462c00,
-                 3px 8px 15px rgba(255, 255, 255, 0.435),
-                 3px 8px  5px rgba(255, 255, 255, 0.639);
+    text-shadow: 0 2px 0 #cb8000,
+        0 4px 0 #b47200,
+        0 6px 0 #9e6400,
+        0 8px 0 #764b00,
+        0 10px 0 #643f00,
+        0 12px 0 #462c00,
+        3px 8px 15px rgba(255, 255, 255, 0.435),
+        3px 8px 5px rgba(255, 255, 255, 0.639);
     animation: letra-animada 4s linear infinite;
 }
+
 @keyframes letra-animada {
-    0%{
-        text-shadow: 0  2px  0   #cb8000,
-                 0  4px  0   #b47200,
-                 0  6px  0   #9e6400, 
-                 0  8px  0   #764b00, 
-                 0 10px  0   #643f00,
-                 0 12px  0   #462c00,
-                 3px 8px 15px rgba(255, 255, 255, 0.274),
-                 3px 8px  5px rgba(255, 255, 255, 0.404);
+    0% {
+        text-shadow: 0 2px 0 #cb8000,
+            0 4px 0 #b47200,
+            0 6px 0 #9e6400,
+            0 8px 0 #764b00,
+            0 10px 0 #643f00,
+            0 12px 0 #462c00,
+            3px 8px 15px rgba(255, 255, 255, 0.274),
+            3px 8px 5px rgba(255, 255, 255, 0.404);
     }
-    50%{
-        text-shadow: 0  2px  0   #cb8000,
-                 0  4px  0   #b47200,
-                 0  6px  0   #9e6400, 
-                 0  8px  0   #764b00, 
-                 0 10px  0   #643f00,
-                 0 12px  0   #462c00,
-                 3px 8px 15px rgba(255, 255, 255, 0.896),
-                 3px 8px  5px rgba(255, 255, 255, 0.9);
+
+    50% {
+        text-shadow: 0 2px 0 #cb8000,
+            0 4px 0 #b47200,
+            0 6px 0 #9e6400,
+            0 8px 0 #764b00,
+            0 10px 0 #643f00,
+            0 12px 0 #462c00,
+            3px 8px 15px rgba(255, 255, 255, 0.896),
+            3px 8px 5px rgba(255, 255, 255, 0.9);
     }
-    100%{
-        text-shadow: 0  2px  0   #cb8000,
-                 0  4px  0   #b47200,
-                 0  6px  0   #9e6400, 
-                 0  8px  0   #764b00, 
-                 0 10px  0   #643f00,
-                 0 12px  0   #462c00,
-                 3px 8px 15px rgba(255, 255, 255, 0.274),
-                 3px 8px  5px rgba(255, 255, 255, 0.404);
+
+    100% {
+        text-shadow: 0 2px 0 #cb8000,
+            0 4px 0 #b47200,
+            0 6px 0 #9e6400,
+            0 8px 0 #764b00,
+            0 10px 0 #643f00,
+            0 12px 0 #462c00,
+            3px 8px 15px rgba(255, 255, 255, 0.274),
+            3px 8px 5px rgba(255, 255, 255, 0.404);
     }
 }
-footer{
+
+footer {
     padding: 10px;
     text-align: center;
     font-size: 11px;
     background-color: rgb(30, 30, 30);
     color: aliceblue;
 }
-.juego .laser{
+
+.juego .laser {
     position: absolute;
     margin-left: -2.5px;
     height: 20px;
     z-index: -1;
 }
-.juego .enemigo{
+
+.juego .enemiLaser {
     position: absolute;
+    margin-left: -2.5px;
+    height: 15px;
+    z-index: -1;
+}
+
+.juego .enemigo {
+    position: absolute;
+}
+
+.lose {
+    display: none;
+    background: #6b1818;
+    color: white;
+    padding: 20px 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    animation: pop-in 1s;
+}
+
+.win {
+    display: none;
+    position: absolute;
+    background: #05c04d;
+    color: white;
+    padding: 20px 50px;
+    box-shadow: 0 2px 10px rgba(0, 0, 0, 0.2);
+    border-radius: 10px;
+    text-align: center;
+    animation: pop-in 1s;
 }
