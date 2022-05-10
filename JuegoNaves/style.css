@@ -1,5 +1,6 @@
 body {
     height: 100%;
+    /* text-align: center; */
     overflow: hidden;
     color: rgb(242, 251, 66);
     background-color: rgb(30, 30, 30);
@@ -125,6 +126,7 @@ footer {
 
 .lose {
     display: none;
+    position: absolute;
     background: #6b1818;
     color: white;
     padding: 20px 50px;
@@ -132,7 +134,6 @@ footer {
     border-radius: 10px;
     text-align: center;
     animation: pop-in 1s;
-    margin-top: 12em;
 }
 
 .win {
@@ -148,7 +149,6 @@ footer {
 }
 
 /* Menu */
-
 .eightbit-btn {
     background: #92cd41;
     font: bold 80px/1 arial;

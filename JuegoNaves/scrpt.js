@@ -1,3 +1,5 @@
+const RESTART = document.querySelector(".btn-restart");
+const localStorage = window.localStorage;
 const T_DER = 39;
 const T_IZQ = 37;
 const T_UP = 38;
@@ -7,9 +9,9 @@ const T_SPACE = 32;
 const JUEGO_ANCH = 800;
 const JUEGO_ALT = 600;
 
-const VELOCIDAD = 2; // Cuato mayor mas velocidad
-const CANTDISPARO = 40; //Cunto menos mas disparos
-const VELICIDADLASER = 2 //Cuanto mayor mas velocidad
+let VELOCIDAD = 2; // Cuato mayor mas velocidad
+let CANTDISPARO = 40; //Cunto menos mas disparos
+let VELICIDADLASER = 2 //Cuanto mayor mas velocidad
 
 const STATE = {
     x_pos: 0,
@@ -26,7 +28,7 @@ const STATE = {
     enemiLasers: [],
     nave_anch: 80,
     enemi_anch: 80,
-    num_enemigos: 10,
+    num_enemigos: 0,
     finDelJuego: false
 }
 
@@ -171,10 +173,26 @@ function createEnemi($juego, x, y) {
 
 function createEnemigos($juego) {
     for (var i = 1; i <= STATE.num_enemigos / 2; i++) {
-        createEnemi($juego, (i - 1) * 130, 60);
+        createEnemi($juego, (i - 1) * 500, 60);
     }
     for (var i = 1; i <= STATE.num_enemigos / 2; i++) {
-        createEnemi($juego, (i - 1) * 130, 130);
+        createEnemi($juego, (i - 1) * 500, 150);
+    }
+}
+function createEnemigos2($juego) {
+    for (var i = 1; i <= STATE.num_enemigos / 2; i++) {
+        createEnemi($juego, (i - 1) * 300, 60);
+    }
+    for (var i = 1; i <= STATE.num_enemigos / 2; i++) {
+        createEnemi($juego, (i - 1) * 300, 150);
+    }
+}
+function createEnemigos3($juego) {
+    for (var i = 1; i <= STATE.num_enemigos / 2; i++) {
+        createEnemi($juego, (i - 1) * 140, 60);
+    }
+    for (var i = 1; i <= STATE.num_enemigos / 2; i++) {
+        createEnemi($juego, (i - 1) * 140, 130);
     }
 }
 
@@ -261,30 +279,91 @@ function KeyRelease(event) {
 
 //Update juego
 function update() {
+
     updatePlayer();
     updateLaser($juego);
     updateEnemi($juego);
     updateEnemiLaser();
 
-    window.requestAnimationFrame(update);
+    var request = window.requestAnimationFrame(update);
 
     if (STATE.finDelJuego) {
         document.querySelector(".lose").style.display = "block";
-        document.querySelector(".juego").style.display = "none";
+        window.cancelAnimationFrame(request);
     }
     if (STATE.enemigos.length == 0) {
         document.querySelector(".win").style.display = "block";
+        window.cancelAnimationFrame(request);
     }
+    
 }
 
 //Juego
 const $juego = document.querySelector(".juego");
 createPlayer($juego);
-createEnemigos($juego);
+
+
 
 //Listeners
 window.addEventListener("keydown", KeyPress);
 window.addEventListener("keyup", KeyRelease);
+const restart = document.querySelectorAll("#difilcultad")
 
+restart.forEach(boton => {
+    boton.addEventListener("click", ()=>{
+        window.location.reload();
+    });
+})
 
-update();
+document.querySelector("#siguiente").addEventListener("click",()=>{
+    if(VELOCIDAD == 5){
+        document.querySelector(".win").style.display = "none";
+        playGame2();
+    }else if(VELOCIDAD == 3){
+        document.querySelector(".win").style.display = "none";
+        playGame3();
+    }else{
+        window.location.reload();
+    }
+
+});
+
+//Iniciar juego
+
+function startGame() {
+    document.querySelector("#facil").addEventListener("click", playGame);
+    document.querySelector("#medio").addEventListener("click", playGame2);
+    document.querySelector("#dificil").addEventListener("click", playGame3);
+}
+function playGame() {
+    document.querySelector(".menu").style.display = "none";
+    document.querySelector(".contenedor").style.display = "flex";
+    STATE.num_enemigos = 5;
+    VELOCIDAD = 5; // Cuato mayor mas velocidad
+    CANTDISPARO = 20; //Cunto menos mas disparos
+    VELICIDADLASER = 3 //Cuanto mayor mas velocidad
+    createEnemigos($juego);
+    update();
+}
+function playGame2() {
+    document.querySelector(".menu").style.display = "none";
+    document.querySelector(".contenedor").style.display = "flex";
+    STATE.num_enemigos = 7;
+    VELOCIDAD = 3; // Cuato mayor mas velocidad
+    CANTDISPARO = 30; //Cunto menos mas disparos
+    VELICIDADLASER = 2.5 //Cuanto mayor mas velocidad
+    createEnemigos2($juego);
+    update();
+}
+function playGame3() {
+    document.querySelector(".menu").style.display = "none";
+    document.querySelector(".contenedor").style.display = "flex";
+    STATE.num_enemigos = 11;
+    VELOCIDAD = 2; // Cuato mayor mas velocidad
+    CANTDISPARO = 40; //Cunto menos mas disparos
+    VELICIDADLASER = 2 //Cuanto mayor mas velocidad
+    createEnemigos3($juego);
+    update();
+}
+
+startGame();

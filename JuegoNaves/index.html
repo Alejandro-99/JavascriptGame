@@ -10,36 +10,31 @@
 </head>
 
 <body>
-    <div class="menu" style="display: none;">
+    <div class="menu" style="text-align: center;">
         <header><a class="titulo">SPACE<br>INVADERINO</a></header>
 
         <hr />
-
-        <a class="eightbit-btn">JUGAR</a>
-
+        <a class="eightbit-btn" id="facil">FACIL</a>
         <hr />
-
+        <a class="eightbit-btn eightbit-btn--proceed" id="medio">MEDIO</a>
+        <hr />
+        <a class="eightbit-btn eightbit-btn--reset" id="dificil">DIFICIL</a>
+        <hr />
         <a class="eightbit-btn eightbit-btn--proceed">CONTROLES</a>
-
-        <hr />
-
-        <a class="eightbit-btn eightbit-btn--reset">Reset</a>
-
-        <hr />
     </div>
-    <div class="contenedor">
+    <div class="contenedor" style="display: none;">
         <header><a class="titulo">SPACE<br>INVADERINO</a></header>
         <div class="contenido-juego">
             <div class="juego"></div>
             <div class="lose">
                 <h1>GAME OVER</h1>
                 <h2>ESPABILA BOBI!</h2>
-                <button class="btn" onclick="window.location.reload()">Restart</button>
+                <button class="btn-restart" id="difilcultad">Seleccione dificultad</button>
             </div>
             <div class="win">
                 <h1>GANADOR!</h1>
                 <h2>Winner winner chicken dinner!</h2>
-                <button class="btn" onclick="window.location.reload()">Restart</button>
+                <button class="btn-restart" id="siguiente">Siguiente nivel</button>
             </div>
         </div>
         <script src="scrpt.js"></script>
