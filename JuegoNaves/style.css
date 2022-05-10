@@ -132,6 +132,7 @@ footer {
     border-radius: 10px;
     text-align: center;
     animation: pop-in 1s;
+    margin-top: 12em;
 }
 
 .win {

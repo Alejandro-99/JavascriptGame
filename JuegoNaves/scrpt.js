@@ -7,7 +7,7 @@ const T_SPACE = 32;
 const JUEGO_ANCH = 800;
 const JUEGO_ALT = 600;
 
-const VELOCIDAD = 1.2; // Cuato mayor mas velocidad
+const VELOCIDAD = 2; // Cuato mayor mas velocidad
 const CANTDISPARO = 40; //Cunto menos mas disparos
 const VELICIDADLASER = 2 //Cuanto mayor mas velocidad
 
