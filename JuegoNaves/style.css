@@ -146,3 +146,98 @@ footer {
     text-align: center;
     animation: pop-in 1s;
 }
+
+/* Menu */
+
+.eightbit-btn {
+    background: #92cd41;
+    font: bold 80px/1 arial;
+    display: inline-block;
+    position: relative;
+    text-align: center;
+    font-size: 30px;
+    padding: 20px;
+    text-decoration: none;
+    color: white;
+    text-shadow: 0 2px 0 #cb8000,
+    0 4px 0 #b47200;
+    box-shadow: inset -4px -4px 0px 0px #4aa52e;
+}
+.eightbit-btn:hover, .eightbit-btn:focus {
+    background: #76c442;
+    box-shadow: inset -6px -6px 0px 0px #4aa52e;
+}
+.eightbit-btn:active {
+    box-shadow: inset 4px 4px 0px 0px #4aa52e;
+}
+.eightbit-btn:before, .eightbit-btn:after {
+    content: '';
+    position: absolute;
+    width: 100%;
+    height: 100%;
+    box-sizing: content-box;
+}
+.eightbit-btn:before {
+    top: -6px;
+    left: 0;
+    border-top: 6px black solid;
+    border-bottom: 6px black solid;
+}
+.eightbit-btn:after {
+    left: -6px;
+    top: 0;
+    border-left: 6px black solid;
+    border-right: 6px black solid;
+}
+.eightbit-btn--reset {
+    background: #e76e55;
+    box-shadow: inset -4px -4px 0px 0px #8c2022;
+}
+.eightbit-btn--reset:hover, .eightbit-btn--reset:focus {
+    background: #ce372b;
+    box-shadow: inset -6px -6px 0px 0px #8c2022;
+}
+.eightbit-btn--reset:active {
+    box-shadow: inset 4px 4px 0px 0px #8c2022;
+}
+.eightbit-btn--proceed {
+    background: #f7d51d;
+    box-shadow: inset -4px -4px 0px 0px #e59400;
+}
+.eightbit-btn--proceed:hover, .eightbit-btn--proceed:focus {
+    background: #f2c409;
+    box-shadow: inset -6px -6px 0px 0px #e59400;
+}
+.eightbit-btn--proceed:active {
+    box-shadow: inset 4px 4px 0px 0px #e59400;
+}
+*, *:before, *:after {
+    box-sizing: border-box;
+}
+
+h1 {
+    font-size: 2.8rem;
+    line-height: 3.4rem;
+}
+h2 {
+    font-size: 2rem;
+}
+h1, h2 {
+    font-family: 'Press Start 2P', cursive;
+}
+p {
+    font-size: 1.25rem;
+    line-height: 1.75rem;
+}
+hr {
+    margin: 40px auto;
+    max-width: 100px;
+    display: block;
+    height: 1px;
+    border: 0;
+    border-top: 1px solid #ccc;
+    padding: 0;
+}
+.pen-intro {
+    text-align: center;
+}
