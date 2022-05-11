@@ -12,7 +12,6 @@
 <body>
     <div class="menu" style="text-align: center;">
         <header><a class="titulo">SPACE<br>INVADERINO</a></header>
-
         <hr />
         <a class="eightbit-btn" id="facil">FACIL</a>
         <hr />
@@ -20,8 +19,18 @@
         <hr />
         <a class="eightbit-btn eightbit-btn--reset" id="dificil">DIFICIL</a>
         <hr />
-        <a class="eightbit-btn eightbit-btn--proceed">CONTROLES</a>
+        <div class="popUp"><a class="eightbit-btn eightbit-btn--proceed" id="open">CONTROLES</a> <a
+                class="eightbit-btn eightbit-btn--proceed" id="score">PUNTUACION</a></div>
+
     </div>
+    <div id="modal_container" class="modal-container">
+        <div class="modal">
+            <img src="assets/spaceBar.png" class="space">
+            <img src="assets/flechas.png" class="flechas">
+            <button id="close">Cerrar</button>
+        </div>
+    </div>
+    <script src="popUp.js"></script>
     <div class="contenedor" style="display: none;">
         <header><a class="titulo">SPACE<br>INVADERINO</a></header>
         <div class="contenido-juego">
@@ -37,9 +46,14 @@
                 <button class="btn-restart" id="siguiente">Siguiente nivel</button>
             </div>
         </div>
-        <script src="scrpt.js"></script>
-        <!--<footer></footer>-->
+        <script src="game.js"></script>
+        <div class="puntuacion">PUNTUACION:&nbsp;<a class="score"></a></div>
     </div>
+    <div id="musicaFondo">
+        <span id="play"><a class="eightbit-btn">▷</a></span>
+        <span id="stop"><a class="eightbit-btn eightbit-btn--reset">◻</a></span>
+    </div>
+    <script src="music.js"></script>
 </body>
 
 </html>
