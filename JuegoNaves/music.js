@@ -35,7 +35,14 @@ var sfx = {
 			"assets/explosion.mp3"
 		],
 		loop: false,
-		volume: 0.05
+		volume: 0.04
+	}),
+	start: new Howl({
+		src: [
+			"assets/start.mp3"
+		],
+		loop: false,
+		volume: 0.02
 	})
 }
 

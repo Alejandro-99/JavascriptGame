@@ -358,45 +358,60 @@ function startGame() {
     document.querySelector("#medio").addEventListener("click", playGame2);
     document.querySelector("#dificil").addEventListener("click", playGame3);
 }
-function playGame() {
-    move();
-    timeout = setTimeout(() => {
-        document.querySelector(".menu").style.display = "none";
-        document.querySelector(".contenedor").style.display = "flex";
-        STATE.num_enemigos = 5;
-        VELOCIDAD = 5; // Cuato mayor mas velocidad
-        CANTDISPARO = 20; //Cunto menos mas disparos
-        VELICIDADLASER = 3 //Cuanto mayor mas velocidad
-        createEnemigos($juego);
-        update();
-    }, 1040);
+function sleep(ms) {
+    return new Promise(resolve => setTimeout(resolve, ms));
+}
 
+async function play(tiempo) {
+    await sleep(tiempo);
+
+    document.querySelector(".menu").style.display = "none";
+    document.querySelector(".contenedor").style.display = "flex";
+    STATE.num_enemigos = 5;
+    VELOCIDAD = 5; // Cuato mayor mas velocidad
+    CANTDISPARO = 20; //Cunto menos mas disparos
+    VELICIDADLASER = 3 //Cuanto mayor mas velocidad
+    createEnemigos($juego);
+    update();
+}
+async function play2(tiempo) {
+    await sleep(tiempo);
+
+    document.querySelector(".menu").style.display = "none";
+    document.querySelector(".contenedor").style.display = "flex";
+    STATE.num_enemigos = 7;
+    VELOCIDAD = 3; // Cuato mayor mas velocidad
+    CANTDISPARO = 30; //Cunto menos mas disparos
+    VELICIDADLASER = 2.5 //Cuanto mayor mas velocidad
+    createEnemigos2($juego);
+    update();
+}
+async function play3(tiempo) {
+    await sleep(tiempo);
+
+    document.querySelector(".menu").style.display = "none";
+    document.querySelector(".contenedor").style.display = "flex";
+    STATE.num_enemigos = 11;
+    VELOCIDAD = 2; // Cuato mayor mas velocidad
+    CANTDISPARO = 40; //Cunto menos mas disparos
+    VELICIDADLASER = 2 //Cuanto mayor mas velocidad
+    createEnemigos3($juego);
+    update();
+}
+function playGame() {
+    sfx.start.play();
+    move();
+    play(1040);
 }
 function playGame2() {
+    sfx.start.play();
     move();
-    timeout = setTimeout(() => {
-        document.querySelector(".menu").style.display = "none";
-        document.querySelector(".contenedor").style.display = "flex";
-        STATE.num_enemigos = 7;
-        VELOCIDAD = 3; // Cuato mayor mas velocidad
-        CANTDISPARO = 30; //Cunto menos mas disparos
-        VELICIDADLASER = 2.5 //Cuanto mayor mas velocidad
-        createEnemigos2($juego);
-        update();
-    }, 1040);
+    play2(1040);
 }
 function playGame3() {
+    sfx.start.play();
     move();
-    timeout = setTimeout(() => {
-        document.querySelector(".menu").style.display = "none";
-        document.querySelector(".contenedor").style.display = "flex";
-        STATE.num_enemigos = 11;
-        VELOCIDAD = 2; // Cuato mayor mas velocidad
-        CANTDISPARO = 40; //Cunto menos mas disparos
-        VELICIDADLASER = 2 //Cuanto mayor mas velocidad
-        createEnemigos3($juego);
-        update();
-    }, 1040);
+    play3(1040);
 }
 
 startGame();
