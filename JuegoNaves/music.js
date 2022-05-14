@@ -1,20 +1,57 @@
-window.addEventListener("load",function(){
-	document.getElementById("play").addEventListener("click",sonarMusica);
-	document.getElementById("stop").addEventListener("click",pararMusica);			
-});
-
-function sonarMusica(){
-	var sonido = document.createElement("iframe");
-	sonido.setAttribute("src","assets/music.mp3");
-	document.body.appendChild(sonido);
-	document.getElementById("play").removeEventListener("click",sonarMusica);
+var music = {
+	overworld: new Howl({
+		src: [
+			"assets/music.mp3"
+		],
+		loop: true,
+		volume: 0.09
+	})
 }
 
-function pararMusica(){
-	var iframe = document.getElementsByTagName("iframe");
+var sfx = {
+	boost: new Howl({
+		src: [
+			"assets/laser.mp3"
+		],
+		loop: false,
+		volume: 0.01
+	}),
+	win: new Howl({
+		src: [
+			"assets/win.mp3"
+		],
+		loop: false,
+		volume: 0.09
+	}),
+	lose: new Howl({
+		src: [
+			"assets/lose.mp3"
+		],
+		loop: false,
+		volume: 0.09
+	}),
+	explo: new Howl({
+		src: [
+			"assets/explosion.mp3"
+		],
+		loop: false,
+		volume: 0.05
+	})
+}
 
-	if (iframe.length > 0){
-		iframe[0].parentNode.removeChild(iframe[0]);
-		document.getElementById("play").addEventListener("click",sonarMusica);
+window.addEventListener("load", function () {
+	document.getElementById("play").addEventListener("click", sonarMusica);
+	document.getElementById("stop").addEventListener("click", pararMusica);
+});
+
+function sonarMusica() {
+
+	if (!music.overworld.playing()) {
+		music.overworld.play();
 	}
+}
+
+function pararMusica() {
+
+	music.overworld.pause();
 }
