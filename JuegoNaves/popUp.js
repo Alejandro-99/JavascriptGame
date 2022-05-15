@@ -24,13 +24,17 @@ const close2 = document.getElementById("close2");
 
 open.addEventListener("click", () => {
     modal_container.classList.add("show");
+    sfx.open.play();
 });
 open2.addEventListener("click", () => {
     modal_container2.classList.add("show");
+    sfx.open.play();
 });
 close.addEventListener("click", () => {
     modal_container.classList.remove("show");
+    sfx.open.play();
 });
 close2.addEventListener("click", () => {
     modal_container2.classList.remove("show");
+    sfx.open.play();
 });

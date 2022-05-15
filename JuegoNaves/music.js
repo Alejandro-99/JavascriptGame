@@ -43,6 +43,13 @@ var sfx = {
 		],
 		loop: false,
 		volume: 0.02
+	}),
+	open: new Howl({
+		src: [
+			"assets/open.mp3"
+		],
+		loop: false,
+		volume: 0.2
 	})
 }
 
@@ -54,11 +61,12 @@ window.addEventListener("load", function () {
 function sonarMusica() {
 
 	if (!music.overworld.playing()) {
+		sfx.open.play();
 		music.overworld.play();
 	}
 }
 
 function pararMusica() {
-
+	sfx.open.play();
 	music.overworld.pause();
 }
