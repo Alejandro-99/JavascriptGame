@@ -410,7 +410,10 @@ button:focus {
     height: 200px;
     border-radius: 10px;
 }
-
+.imagenCopa{
+    height: 50px;
+    width: auto;
+}
 ol {
     list-style-type: none;
     font: bold 10px/1 arial;
