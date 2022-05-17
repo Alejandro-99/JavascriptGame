@@ -15,6 +15,7 @@ let VELICIDADLASER = 2; //Cuanto mayor mas velocidad
 let score = 0;
 let noprimero = true;
 let nosegundo = true;
+let tiempo = 0;
 
 const STATE = {
     x_pos: 0,
@@ -36,6 +37,20 @@ const STATE = {
 }
 
 //Funciones generales
+
+function getVal() {
+    const val = document.querySelector('input').value;
+    return val;
+}
+
+function home() {
+    sfx.open.play();
+    setTimeout(reload, 400);
+}
+function reload() {
+    window.location.reload();
+}
+
 
 function setPos($elemento, x, y) {
     $elemento.style.transform = `translate(${x}px,${y}px)`;
@@ -85,6 +100,27 @@ function collideRect(rect1, rect2) {
         rect2.right < rect1.left ||
         rect2.top > rect1.bottom ||
         rect2.bottom < rect1.top);
+}
+
+function limpiarLasers() {
+    const lasers = STATE.lasers;
+    for (let i = 0; i < lasers.length; i++) {
+        const laser = lasers[i];
+        hitboxLaser(lasers, laser, laser.$laser);
+    }
+    for (let i = 0; i < lasers.length; i++) {
+        const laser = lasers[i];
+        hitboxLaser(lasers, laser, laser.$laser);
+    }
+    const enemiLasers = STATE.enemiLasers;
+    for (let i = 0; i < enemiLasers.length; i++) {
+        const enemiLaser = enemiLasers[i];
+        hitboxLaser(enemiLasers, enemiLaser, enemiLaser.$enemiLaser);
+    }
+    for (let i = 0; i < enemiLasers.length; i++) {
+        const enemiLaser = enemiLasers[i];
+        hitboxLaser(enemiLasers, enemiLaser, enemiLaser.$enemiLaser);
+    }
 }
 
 //Jugador
@@ -283,7 +319,12 @@ function KeyRelease(event) {
         STATE.disparar = false;
     }
 }
-
+function updateContador(){
+    setTimeout(contador,1000);
+}
+function contador(){
+    tiempo++;
+}
 //Update juego
 function update() {
 
@@ -291,21 +332,13 @@ function update() {
     updateLaser($juego);
     updateEnemi($juego);
     updateEnemiLaser();
-
-    document.querySelector(".score").innerHTML = score;
-    if (localStorage.getItem("primero") < score) {
-        localStorage.setItem("primero", score);
-        console.log("priemro")
-        noprimero = false;
-    } else if ((localStorage.getItem("segundo") < score) && noprimero) {
-        localStorage.setItem("segundo", score);
-        console.log("segun")
-        nosegundo = false;
-    } else if ((localStorage.getItem("tercero") < score) && noprimero && nosegundo) {
-        localStorage.setItem("tercero", score);
-        console.log("terce")
+    updateContador();
+    if(score > 0){
+        document.querySelector(".score").innerHTML =parseInt(score- tiempo * 0.1);
+    }else{
+        document.querySelector(".score").innerHTML =parseInt(score);
     }
-
+    
     var request = window.requestAnimationFrame(update);
 
     if (STATE.finDelJuego) {
@@ -313,9 +346,14 @@ function update() {
         document.querySelector(".lose").style.display = "block";
         window.cancelAnimationFrame(request);
     }
-    if (STATE.enemigos.length == 0) {
-        sfx.win.play();
+    if (STATE.enemigos.length == 0 && (VELOCIDAD == 3 || VELOCIDAD == 5)) {
+        sfx.stage.play();
         document.querySelector(".win").style.display = "block";
+        window.cancelAnimationFrame(request);
+    }
+    if (STATE.enemigos.length == 0 && VELOCIDAD == 2) {
+        sfx.win.play();
+        document.querySelector(".winFinal").style.display = "block";
         window.cancelAnimationFrame(request);
     }
 
@@ -328,7 +366,10 @@ createPlayer($juego);
 //Listeners
 window.addEventListener("keydown", KeyPress);
 window.addEventListener("keyup", KeyRelease);
-const restart = document.querySelectorAll("#difilcultad")
+const restart = document.querySelectorAll("#difilcultad");
+window.addEventListener("load", function () {
+    document.getElementById("home").addEventListener("click", home);
+});
 
 restart.forEach(boton => {
     boton.addEventListener("click", () => {
@@ -340,16 +381,51 @@ document.querySelector("#siguiente").addEventListener("click", () => {
     if (VELOCIDAD == 5) {
         document.querySelector(".win").style.display = "none";
         clearTimeout(timeout);
+        limpiarLasers();
+        sfx.open.play();
         playGame2();
     } else if (VELOCIDAD == 3) {
         document.querySelector(".win").style.display = "none";
         clearTimeout(timeout);
+        limpiarLasers();
+        sfx.open.play();
         playGame3();
-    } else {
-        window.location.reload();
     }
 
 });
+
+document.querySelector("#final").addEventListener("click", () => {
+    sfx.open.play();
+    let scoree = document.querySelector(".score").innerHTML;
+    if (localStorage.getItem("primero") <= parseInt(scoree)) {
+        localStorage.setItem("primero", parseInt(scoree));
+        let nom = getVal();
+        localStorage.setItem("n1", nom);
+        noprimero = false;
+    } else if ((localStorage.getItem("segundo") <= parseInt(scoree)) && noprimero) {
+        localStorage.setItem("segundo", parseInt(scoree));
+        let nom = getVal();
+        localStorage.setItem("n2", nom);
+        nosegundo = false;
+    } else if ((localStorage.getItem("tercero") <= parseInt(scoree.textContent())) && noprimero && nosegundo) {
+        localStorage.setItem("tercero", parseInt(scoree));
+        let nom = getVal();
+        localStorage.setItem("n3", nom);
+    }
+    setTimeout(reload, 500);
+});
+const input = document.querySelector("input");
+
+input.addEventListener("input", submit);
+
+function submit() {
+    if(getVal().length == 3){
+        document.querySelector("#final").style.display = "";
+    }
+    if(getVal().length != 3){
+        document.querySelector("#final").style.display = "none";
+    }
+}
 
 //Iniciar juego
 const timeout = 0;
@@ -367,6 +443,7 @@ async function play(tiempo) {
 
     document.querySelector(".menu").style.display = "none";
     document.querySelector(".contenedor").style.display = "flex";
+    document.querySelector("#home").style.display = "flex";
     STATE.num_enemigos = 5;
     VELOCIDAD = 5; // Cuato mayor mas velocidad
     CANTDISPARO = 20; //Cunto menos mas disparos
@@ -376,9 +453,10 @@ async function play(tiempo) {
 }
 async function play2(tiempo) {
     await sleep(tiempo);
-
+    document.querySelector(".barra2").style.display = "none";
     document.querySelector(".menu").style.display = "none";
     document.querySelector(".contenedor").style.display = "flex";
+    document.querySelector("#home").style.display = "flex";
     STATE.num_enemigos = 7;
     VELOCIDAD = 3; // Cuato mayor mas velocidad
     CANTDISPARO = 30; //Cunto menos mas disparos
@@ -388,9 +466,10 @@ async function play2(tiempo) {
 }
 async function play3(tiempo) {
     await sleep(tiempo);
-
+    document.querySelector(".barra2").style.display = "none";
     document.querySelector(".menu").style.display = "none";
     document.querySelector(".contenedor").style.display = "flex";
+    document.querySelector("#home").style.display = "flex";
     STATE.num_enemigos = 11;
     VELOCIDAD = 2; // Cuato mayor mas velocidad
     CANTDISPARO = 40; //Cunto menos mas disparos
@@ -406,11 +485,13 @@ function playGame() {
 function playGame2() {
     sfx.start.play();
     move();
+    move2();
     play2(1040);
 }
 function playGame3() {
     sfx.start.play();
     move();
+    move2();
     play3(1040);
 }
 

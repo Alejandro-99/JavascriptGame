@@ -21,7 +21,7 @@ var sfx = {
 			"assets/win.mp3"
 		],
 		loop: false,
-		volume: 0.09
+		volume: 0.2
 	}),
 	lose: new Howl({
 		src: [
@@ -47,6 +47,13 @@ var sfx = {
 	open: new Howl({
 		src: [
 			"assets/open.mp3"
+		],
+		loop: false,
+		volume: 0.2
+	}),
+	stage: new Howl({
+		src: [
+			"assets/stageWin.mp3"
 		],
 		loop: false,
 		volume: 0.2
