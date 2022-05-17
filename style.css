@@ -130,7 +130,7 @@ footer {
     background: #ff3e3e;
     color: rgb(255, 255, 255);
     padding: 20px 50px;
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.37);
     text-align: center;
     animation: pop-in 1s;
     text-shadow: 0 3px 0 #ff1313,
@@ -141,15 +141,41 @@ footer {
 .win {
     display: none;
     position: absolute;
-    background: #57ff35;
+    background: #f7d51d;
     color: rgb(255, 255, 255);
     padding: 20px 50px;
-    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.2);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.555);
+    font: bold 80px/1 arial;
     text-align: center;
     animation: pop-in 1s;
-    text-shadow: 0 3px 0 #00c400,
-        0 4px 0 #a4f58f;
+    text-shadow: 0 2px 0 #cb8000,
+        0 4px 0 #b47200;
+}
+
+.winFinal {
+    display: none;
+    position: absolute;
+    background: #92cd41;
+    color: rgb(255, 255, 255);
+    padding: 20px 50px;
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.555);
     font: bold 80px/1 arial;
+    text-align: center;
+    animation: pop-in 1s;
+    text-shadow: 0 2px 0 #cb8000,
+        0 4px 0 #b47200;
+}
+
+#name {
+    background-color: rgb(63, 63, 63);
+    box-shadow: 0 2px 10px rgba(255, 255, 255, 0.555);
+    font: bold 30px/1 arial;
+    text-align: center;
+    color: #ffffff;
+    text-shadow: 0 2px 0 #cb8000,
+        0 4px 0 #b47200,
+        3px 8px 5px rgba(255, 255, 255, 0.356);
+    width: 80px;
 }
 
 /* Menu */
@@ -279,10 +305,17 @@ hr {
     justify-content: flex-end;
 }
 
+#home,
 #play,
 #stop {
     display: inline-block;
     padding: 16px;
+}
+
+#home a {
+    height: 1.4588em;
+    font-size: 3em;
+    padding-top: 6px;
 
 }
 
@@ -410,10 +443,12 @@ button:focus {
     height: 200px;
     border-radius: 10px;
 }
-.imagenCopa{
+
+.imagenCopa {
     height: 50px;
     width: auto;
 }
+
 ol {
     list-style-type: none;
     font: bold 10px/1 arial;
@@ -556,12 +591,19 @@ ol {
 }
 
 /* progres bar */
-.barra {
+.barra,
+.barra2 {
     display: flex;
     justify-content: center;
 }
 
-#myProgress {
+.barra2 {
+    margin-top: 2em;
+    margin-bottom: 2em;
+}
+
+#myProgress,
+#myProgress2 {
     justify-content: center;
     width: 20%;
     background-color: rgb(49, 49, 49);
@@ -579,7 +621,8 @@ ol {
         0 2px 0 #b47200;
 }
 
-#myBar {
+#myBar,
+#myBar2 {
     width: 0%;
     height: 30px;
     background-color: #919191;

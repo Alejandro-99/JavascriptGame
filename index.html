@@ -30,7 +30,6 @@
                 <div id="myBar">0%</div>
             </div>
         </div>
-        <script src="progresbar.js"></script>
     </div>
     <div id="modal_container" class="modal-container">
         <div class="modal">
@@ -45,15 +44,15 @@
             <div class="leaderboard">
                 <ol>
                     <li>
-                        <mark>Primero</mark>
+                        <mark class="n1"></mark>
                         <small class="primero"></small>
                     </li>
                     <li>
-                        <mark>Segundo</mark>
+                        <mark class="n2"></mark>
                         <small class="segundo"></small>
                     </li>
                     <li>
-                        <mark>Tercero</mark>
+                        <mark class="n3"></mark>
                         <small class="tercero"></small>
                     </li>
                 </ol>
@@ -67,23 +66,37 @@
         <div class="contenido-juego">
             <div class="juego"></div>
             <div class="lose">
-                <h1>GAME OVER</h1>
-                <h2>ESPABILA BOBI!</h2>
+                <h1>😈GAME OVER😈</h1>
+                <h2>¡ESPABILA BOBI!</h2>
                 <button class="btn-restart" id="difilcultad">Seleccione dificultad</button>
             </div>
             <div class="win">
-                <h1>GANADOR!</h1>
-                <h2>Winner winner chicken dinner!</h2>
+                <h1>🔥NIVEL SUPERADO🔥</h1>
+                <h2>¿FACIL?</h2>
                 <button class="btn-restart" id="siguiente">Siguiente nivel</button>
+            </div>
+            <div class="winFinal">
+                <h1>👾JUEGO COMPLETADO👾</h1>
+                <h2>🥳FACILITO🥳</h2>
+                <a style="font-size: 30px;">INICIALES(3):<input type="text" name="name" id="name"></a>
+                <br>
+                <button class="btn-restart" id="final" style="display: none;">Registrar</button>
             </div>
         </div>
         <script src="game.js"></script>
         <div class="puntuacion">PUNTUACION:&nbsp;<a class="score"></a></div>
+        <div class="barra2" style="display: none;">
+            <div id="myProgress2">
+                <div id="myBar2">0%</div>
+            </div>
+        </div>
     </div>
     <div id="musicaFondo">
+        <span id="home" style="display: none;"><a class="eightbit-btn eightbit-btn--proceed">⌂</a></span>
         <span id="play"><a class="eightbit-btn">▷</a></span>
         <span id="stop"><a class="eightbit-btn eightbit-btn--reset">◻</a></span>
     </div>
+    <script src="progresbar.js"></script>
     <script src="music.js"></script>
 </body>
 
