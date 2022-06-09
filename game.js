@@ -9,9 +9,9 @@ const T_SPACE = 32;
 const JUEGO_ANCH = 800;
 const JUEGO_ALT = 600;
 
-let VELOCIDAD = 2; // Cuato mayor mas velocidad
+let VELOCIDAD = 2; // Cuanto mayor mas velocidad de la nave 
 let CANTDISPARO = 40; //Cunto menos mas disparos
-let VELICIDADLASER = 2; //Cuanto mayor mas velocidad
+let VELOCIDADLASER = 2; //Cuanto mayor mas velocidad de disparo
 let score = 0;
 let noprimero = true;
 let nosegundo = true;
@@ -177,7 +177,7 @@ function updateLaser() {
     const lasers = STATE.lasers;
     for (let i = 0; i < lasers.length; i++) {
         const laser = lasers[i];
-        laser.y -= VELICIDADLASER;
+        laser.y -= VELOCIDADLASER;
         if (laser.y < -2) {
             hitboxLaser(lasers, laser, laser.$laser);
         }
@@ -444,10 +444,10 @@ async function play(tiempo) {
     document.querySelector(".menu").style.display = "none";
     document.querySelector(".contenedor").style.display = "flex";
     document.querySelector("#home").style.display = "flex";
-    STATE.num_enemigos = 5;
-    VELOCIDAD = 5; // Cuato mayor mas velocidad
+    STATE.num_enemigos = 4;
+    VELOCIDAD = 5; // Cuato mayor mas velocidad de la nave
     CANTDISPARO = 20; //Cunto menos mas disparos
-    VELICIDADLASER = 3 //Cuanto mayor mas velocidad
+    VELOCIDADLASER = 3 //Cuanto mayor mas velocidad de disparo
     createEnemigos($juego);
     update();
 }
@@ -457,10 +457,10 @@ async function play2(tiempo) {
     document.querySelector(".menu").style.display = "none";
     document.querySelector(".contenedor").style.display = "flex";
     document.querySelector("#home").style.display = "flex";
-    STATE.num_enemigos = 7;
-    VELOCIDAD = 3; // Cuato mayor mas velocidad
+    STATE.num_enemigos = 6;
+    VELOCIDAD = 3; // Cuato mayor mas velocidad de la nave
     CANTDISPARO = 30; //Cunto menos mas disparos
-    VELICIDADLASER = 2.5 //Cuanto mayor mas velocidad
+    VELOCIDADLASER = 2.5 //Cuanto mayor mas velocidad de disparo
     createEnemigos2($juego);
     update();
 }
@@ -470,10 +470,10 @@ async function play3(tiempo) {
     document.querySelector(".menu").style.display = "none";
     document.querySelector(".contenedor").style.display = "flex";
     document.querySelector("#home").style.display = "flex";
-    STATE.num_enemigos = 11;
-    VELOCIDAD = 2; // Cuato mayor mas velocidad
+    STATE.num_enemigos = 10;
+    VELOCIDAD = 2; // Cuato mayor mas velocidad de la nave
     CANTDISPARO = 40; //Cunto menos mas disparos
-    VELICIDADLASER = 2 //Cuanto mayor mas velocidad
+    VELOCIDADLASER = 2 //Cuanto mayor mas velocidad de disparo
     createEnemigos3($juego);
     update();
 }
